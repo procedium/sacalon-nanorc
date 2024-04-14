@@ -1,29 +1,42 @@
 ## Syntax highlighting for Sacalon files.
 
-# NOTE: multiline strings are not
-#       as great as i hope they would be.
-
-syntax sacalon "\.has$"
+syntax sacalon "\.sa$"
 comment "//"
 
-# keywords
-color magenta "\<(var|new|delete|static|if|else|while|for|in|function|return|struct|and|or|not)\>"
+# Flow control.
+color yellow "\<(if|else|while|for|in)\>"
+color yellow "\<(and|or|not)\>"
+color magenta "\<(return|continue|break)\>"
 
-# types and literals
-color orange "\<(u?int(8|16|32|64)|int|float|double|string|bool|Function)\>"
-color orange "\<_*[A-Z][A-Za-z0-9_]*\>"
-color orange "\<([0-9](.[0-9])?)\>"
-color orange "\<NULL\>"
-color green "(\"|\')([^\"\']|\\"|\\')*(\"|\')"
-color green start="\"\"\"" end="\"\"\""
+# Memory related.
+color yellow "\<(new|delete)\>"
 
-# builtins (yeh, no support)
-# "\<(sizeof|range|len)\>"
+# Types and related keywords.
+color green "\<(static|u?int(8|16|32|64)|int|float|double|string|bool|Function)\>"
+color green "\<(function|var|struct|enum)\>"
 
-# decorator and use
+# builtins.
+color blue "\<(sizeof|range|len)\>"
+
+# Literals.
+color red "\"([^\"]|\\\")\""
+color red "'([^']|\\')*'"
+color red start="\"\"\"" end="\"\"\""
+color red "\<(NULL|true|false)\>"
+
+# Decorator.
+color white,red "@[A-z0-9_]"
 color cyan "@\<(static_function|extern)\>"
-color blue "\<c?use\>"
 
-# comments
-color gray "//.*"
-color gray start="/\*" end="\*/"
+# Use and Cuse.
+color cyan "\<c?use\>"
+
+# Comments.
+color grey "//.*"
+color grey start="/\*" end="\*/"
+
+# Reminders.
+color white,yellow "\<(FIXME|TODO|XXX)\>"
+
+# Trailing whitespace.
+color ,green "[[:space:]]+$"
