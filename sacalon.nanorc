@@ -1,0 +1,29 @@
+## Syntax highlighting for Sacalon files.
+
+# NOTE: multiline strings are not
+#       as great as i hope they would be.
+
+syntax sacalon "\.has$"
+comment "//"
+
+# keywords
+color magenta "\<(var|new|delete|static|if|else|while|for|in|function|return|struct|and|or|not)\>"
+
+# types and literals
+color orange "\<(u?int(8|16|32|64)|int|float|double|string|bool|Function)\>"
+color orange "\<_*[A-Z][A-Za-z0-9_]*\>"
+color orange "\<([0-9](.[0-9])?)\>"
+color orange "\<NULL\>"
+color green "(\"|\')([^\"\']|\\"|\\')*(\"|\')"
+color green start="\"\"\"" end="\"\"\""
+
+# builtins (yeh, no support)
+# "\<(sizeof|range|len)\>"
+
+# decorator and use
+color cyan "@\<(static_function|extern)\>"
+color blue "\<c?use\>"
+
+# comments
+color gray "//.*"
+color gray start="/\*" end="\*/"
